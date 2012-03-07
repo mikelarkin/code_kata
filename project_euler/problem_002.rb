@@ -11,15 +11,9 @@
 limit = (ARGV.empty? ? 4000000 : ARGV[0].to_i)
 
 result = value = 0
-previous = 0
-current = 1
-count = 0
+previous = current = 1
 
-while (previous + current) < limit
-
-  count += 1
-  # Next number in the sequence is the sum of the previous 2
-  value = previous + current
+while value < limit
 
   # Even values only
   result += value if (value % 2 == 0)
@@ -27,9 +21,12 @@ while (previous + current) < limit
   # Shift the values
   previous, current = current, value
 
+    # Next number in the sequence is the sum of the previous 2
+  value = previous + current
+
 end
 
-puts "Answer for 1 - #{limit}:  #{result} (#{count} Terms)"
+puts "Answer for 1 - #{limit}:  #{result}"
 
 
   
