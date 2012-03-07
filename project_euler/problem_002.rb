@@ -5,3 +5,34 @@
 # 
 # By considering the terms in the Fibonacci sequence whose values do not exceed four million, 
 # find the sum of the even-valued terms.
+# Written by http://github.com/mikelarkin
+
+# Allow the upper limit to be set via the prompt, but default to 4,000,000
+limit = (ARGV.empty? ? 4000000 : ARGV[0].to_i)
+
+result = value = 0
+previous = 0
+current = 1
+count = 0
+
+while (previous + current) < limit
+
+  count += 1
+  # Next number in the sequence is the sum of the previous 2
+  value = previous + current
+
+  # Even values only
+  result += value if (value % 2 == 0)
+
+  # Shift the values
+  previous, current = current, value
+
+end
+
+puts "Answer for 1 - #{limit}:  #{result} (#{count} Terms)"
+
+
+  
+  
+  
+
