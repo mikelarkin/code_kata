@@ -11,6 +11,8 @@
 # Which starting number, under one million, produces the longest chain?
 #
 # NOTE: Once the chain starts the terms are allowed to go above one million.
+#
+# Written by http://github.com/mikelarkin
 
 limit = (ARGV.empty? ? 1000000 : ARGV[0].to_i)
 
