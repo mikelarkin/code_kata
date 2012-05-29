@@ -35,11 +35,17 @@ end
 
 # Flag their sums
 sieve = Array.new(limit) { |i| i }
-abundants.each do |i|
-  abundants.each do |j|
-    sieve[i+j] = nil
-  end
+until abundants.empty?
+  i = abundants.shift
 
+  # Number summed with itself
+  sieve[i + i] = nil
+
+  abundants.each do |j|
+    break if (i+j) > limit
+    sieve[i+j] = nil
+
+  end
 end
 
 # Removes numbers that are are the sum of two abundant numbers
