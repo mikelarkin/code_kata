@@ -15,27 +15,32 @@
 # Find the value of d < 1000 for which 1/d contains the longest recurring cycle in its decimal fraction part.
 #
 # Written by http://github.com/mikelarkin
-require 'bigdecimal'
-limit = (ARGV.empty? ? 10 : ARGV[0].to_i)
+
+
+# Using the Decimal Library from
+# http://ruby-decimal.rubyforge.org/
+
+require 'decimal'
+Decimal.context.precision = 2000
+
+limit = (ARGV.empty? ? 1000 : ARGV[0].to_i)
 pattern = result = ""
 longest = 0
 
+# Check only odd numbers -- would be faster to only check primes
+limit = limit-1 if limit.even?
+
 # This can be done with a simple regex
 # Store the number and the size of the matched pattern
-(2).upto(limit) do |d|
-  pattern = %r/(.+?)\1+?/.match("%.100f" % (BigDecimal.new("1.0")/BigDecimal.new(d.to_f.to_s)))
+while (limit > 0)
 
-  puts "%.100f" % (BigDecimal.new("1.0")/BigDecimal.new(d.to_f.to_s))
-
-  # Need to filter out repeated single digits by seeing if the are all the same
-  if pattern && pattern[1].split('').all? { |value| value == pattern[1][0] }
-    next
-  else
-    if pattern && pattern[1].size > longest
-      longest = d
+  pattern = %r/([0-9]{3,}?)\1+?/.match((Decimal(1)/Decimal(limit)).to_s)
+    if pattern && pattern[1].size > result.size
+      longest = limit
       result = pattern[1]
     end
-  end
+    limit -= 2
+
 end
 
 puts "Longest recurring cycle is: #{longest} with pattern #{result}"
