@@ -12,27 +12,81 @@
 #
 # Written by http://github.com/mikelarkin
 
-require 'pp'
-
 # Grab the grid size
-limit = (ARGV.empty? ? 5 : ARGV[0].to_i)
+limit = (ARGV.empty? ? 1001 : ARGV[0].to_i)
 
 grid = Array.new(limit) { Array.new(limit) }
 
+# Prime the number of steps in each direction
+right_steps = 1
+down_steps = 1
+left_steps = 2
+up_steps = 2
+
+
+# Start in the middle
 i = j = limit / 2
 
-leftbound = i
-rightbound = i
-topbound = i
-bottombound = i
+# Record the starting value
+n = 1
+grid[i][j] = n
+
+
 # Spiral out from the middle
-(limit * limit).times do |n|
-  grid[i][j] = n
+while n <= (limit*limit) do
 
-  leftbound
-  #i = (i+1) % limit
+  # Go right
+  right_steps.times do
+    break if n >= (limit*limit)
+    n+=1
+    j+=1
+    grid[i][j] = n
 
+  end
+
+  break if n >= (limit*limit)
+
+  # Go down
+  down_steps.times do
+    n+=1
+    i+=1
+    grid[i][j] = n
+    break if n >= (limit*limit)
+  end
+
+  break if n >= (limit*limit)
+
+  # Go left
+  left_steps.times do
+    n+=1
+    j-=1
+    grid[i][j] = n
+    break if n >= (limit*limit)
+  end
+
+  break if n >= (limit*limit)
+
+  # Go up
+  up_steps.times do
+    n+=1
+    i-=1
+    grid[i][j] = n
+    break if n >= (limit*limit)
+  end
+
+  right_steps += 2
+  down_steps += 2
+  left_steps += 2
+  up_steps += 2
 
 end
 
-pp grid
+sum = 0
+# Sum the diagonals
+0.upto(limit - 1) do |n|
+  sum += grid[n][n]
+  sum += grid[(limit-1)-n][n]
+end
+
+# Correct for counting 1 twice
+puts sum - 1
