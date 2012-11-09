@@ -14,7 +14,7 @@
 total = 0
 
 # We only need to check 6 digit numbers since 7 * (9^5) > 999999
-2.upto(999999).each do |number|
+2.upto(354294).each do |number|
 # Break the number into digits and sum up the fifth powers
   sum = number.to_s.split(//).inject(0) { |sum, n| sum + (n.to_i ** 5) }
 
