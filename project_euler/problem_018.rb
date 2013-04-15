@@ -29,3 +29,24 @@
 # challenge with a triangle containing one-hundred rows; it cannot be solved by brute force, and requires a clever method! ;o)
 #
 # Written by http://github.com/mikelarkin
+
+
+# First let's solve the sample problem
+
+triangle =  Array.new
+triangle << [3]
+triangle << [7,4]
+triangle << [2,4,6]
+triangle << [8,5,9,3]
+
+triangle.each do |row|
+  row.each do |column|
+    print "#{column} "
+  end
+  print("\n")
+end
+
+# Keep a tally of the totals
+highest_total = 0
+
+row, column = 0,0
