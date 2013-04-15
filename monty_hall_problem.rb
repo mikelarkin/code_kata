@@ -28,23 +28,11 @@ iterations.times do
   # Pick a door
   choice = rand(3)
 
-  # Randomly switch or keep original choice
+  # Randomly decide to switch or to keep original choice
   switch = rand(2)
 
-  if switch == 1
-
-    # We picked incorrectly, but switched so we won
-    if car != choice
-
-      switch_wins += 1
-    end
-
-  else
-    # We picked correctly
-    if car == choice
-      keep_wins += 1
-    end
-  end
+  switch_wins += 1 if (switch == 1 && car != choice)
+  keep_wins += 1 if (switch == 0 && car == choice)
 
 
 end
