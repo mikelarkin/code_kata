@@ -31,8 +31,14 @@ iterations.times do
   # Randomly decide to switch or to keep original choice
   switch = rand(2)
 
-  switch_wins += 1 if (switch == 1 && car != choice)
-  keep_wins += 1 if (switch == 0 && car == choice)
+  # Only check for win conditions
+  if (switch == 1 && car != choice)
+    # Picked a goat, then switched
+    switch_wins += 1 
+  elsif (switch == 0 && car == choice)
+    # Picked the car, and stuck with it
+    keep_wins += 1
+  end
 
 
 end
