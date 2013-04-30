@@ -7,7 +7,6 @@
 # Find all the base 10 palindromes
 limit = (ARGV.empty? ? 999999 : ARGV[0].to_i)
 sum = 0
-numbers = []
 
 1.upto(limit).each do |i|
   if i.to_s == i.to_s.reverse && i.to_s(2) == i.to_s(2).reverse
