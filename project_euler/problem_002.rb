@@ -5,6 +5,7 @@
 #
 # By considering the terms in the Fibonacci sequence whose values do not exceed four million,
 # find the sum of the even-valued terms.
+#
 # Written by http://github.com/mikelarkin
 
 # Allow the upper limit to be set via the prompt, but default to 4,000,000

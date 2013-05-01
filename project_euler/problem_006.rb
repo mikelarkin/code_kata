@@ -10,6 +10,7 @@
 # Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
 #
 # Written by http://github.com/mikelarkin
+
 limit = (ARGV.empty? ? 100 : ARGV[0].to_i)
 
 sum_of_squares = sum = 0

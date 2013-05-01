@@ -1,12 +1,12 @@
 # The prime factors of 13195 are 5, 7, 13 and 29.
-# 
+#
 # What is the largest prime factor of the number 600851475143 ?
-
+#
 # Written by http://github.com/mikelarkin
 # Original algorithm taken from http://www.benrady.com/2009/11/katarubyprime-factors.html
 
-# Allow the number to be set via the prompt, otherwise default to problem spec
 
+# Allow the number to be set via the prompt, otherwise default to problem spec
 number = (ARGV.empty? ? 600851475143 : ARGV[0].to_i)
 
 
