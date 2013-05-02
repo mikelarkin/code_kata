@@ -31,17 +31,13 @@
 
 limit = (ARGV.empty? ? 9999 : ARGV[0].to_i)
 
-def is_palindromic?(number)
-  return number.to_s.reverse == number.to_s
-end
-
 def is_lychrel?(number)
   result = number
   49.times do |iterations|
     # Reverse and add
     result = result + result.to_s.reverse.to_i
     # Check if it's palindromic
-    if is_palindromic?(result)
+    if result.to_s.reverse == result.to_s
       return false
     end
   end
@@ -55,6 +51,4 @@ lychrel_numbers = []
   lychrel_numbers << number if is_lychrel?(number)
 end
 
-
 puts "There are #{lychrel_numbers.size} Lychrel numbers below 10000"
-
