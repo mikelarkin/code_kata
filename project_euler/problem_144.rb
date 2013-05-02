@@ -1,13 +1,15 @@
 # Investigating multiple reflections of a laser beam.
 #
-# In laser physics, a "white cell" is a mirror system that acts as a delay line for the laser beam. The beam enters the cell, bounces around on the mirrors, and eventually works its way back out.
+# In laser physics, a "white cell" is a mirror system that acts as a delay line for the laser beam.
+# The beam enters the cell, bounces around on the mirrors, and eventually works its way back out.
 #
 # The specific white cell we will be considering is an ellipse with the equation 4x2 + y2 = 100
 #
 # The section corresponding to 0.01  x  +0.01 at the top is missing, allowing the light to enter and exit through the hole.
 #
 #
-# The light beam in this problem starts at the point (0.0,10.1) just outside the white cell, and the beam first impacts the mirror at (1.4,-9.6).
+# The light beam in this problem starts at the point (0.0,10.1) just outside the white cell, and the
+# beam first impacts the mirror at (1.4,-9.6).
 #
 # Each time the laser beam hits the surface of the ellipse, it follows the usual law of reflection "angle of incidence equals angle of reflection." That is, both the incident and reflected beams make the same angle with the normal line at the point of incidence.
 #
