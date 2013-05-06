@@ -23,3 +23,30 @@
 # Note: You can assume that all the Roman numerals in the file contain no more than four consecutive identical units.
 #
 # Written by http://github.com/mikelarkin
+
+
+# This function takes in a "valid" roman numeral string and
+# shrinks it down to the most efficient version
+def minimize(number)
+  return []
+end
+
+
+# Load the file into an array
+numbers = Array.new()
+savings = 0
+
+
+# Example 2 - Pass file to block
+File.open("resources/roman.txt", "r") do |infile|
+  while (line = infile.gets)
+    #line = line.gsub("\"", "").gsub(" ", "")
+    numbers << line
+  end
+end
+
+numbers.each do |number|
+  savings += number.size - minimize(number).size
+end
+
+puts "#{savings} numerals were saved."
