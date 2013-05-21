@@ -16,8 +16,7 @@
 
 
 # Setup the game
-keep_wins = switch_wins = 0
-car = 2
+switch_wins = keep_wins = 0
 
 # Read in number of iterations from command line,
 # otherwise default to 500K
@@ -25,19 +24,36 @@ iterations = (ARGV.empty? ? 500000 : ARGV[0].to_i)
 
 iterations.times do
 
+  # Hide the car
+  car = rand(3)
+
   # Pick a door
   choice = rand(3)
 
-  # Randomly decide to switch or to keep original choice
+  # Let's look into the future and see if we want to switch
   switch = rand(2)
 
-  # Only check for win conditions
-  if (switch == 1 && car != choice)
-    # Picked a goat, then switched
-    switch_wins += 1
-  elsif (switch == 0 && car == choice)
-    # Picked the car, and stuck with it
-    keep_wins += 1
+  # Only bother to reveal a door if the player is going to switch
+  if switch == 1
+
+    # Reveal a "goat" door.  This will be done using some array logic.
+    # Basically we are going to take an array of possible doors and subtract out
+    # both their initial choice as well as the car's location
+    # What is left are viable "goat" doors we can show.
+
+    revealed_goat_door = ([0, 1, 2] - [car] - [choice]).first
+
+    # Choose the other door
+    new_choice = ([0, 1, 2] - [revealed_goat_door] - [choice]).first
+    # See if the new choice is the winner
+    if car == new_choice
+      switch_wins += 1
+    end
+  else
+    # See if the player picked correctly from the start
+    if car == choice
+      keep_wins += 1
+    end
   end
 
 end
