@@ -22,6 +22,7 @@ switch_wins = keep_wins = 0
 # otherwise default to 500K
 iterations = (ARGV.empty? ? 500000 : ARGV[0].to_i)
 
+# Always switch to the other door
 iterations.times do
 
   # Hide the car
@@ -32,28 +33,24 @@ iterations.times do
 
   # Reveal a "goat" door.  This will be done using some array logic.
   # Basically we are going to take an array of possible doors and subtract out
-  # both the player's initial choice as well as the car's location
-  # What is left are the "goat" doors we can show.
+  # both their initial choice as well as the car's location
+  # What is left are viable "goat" doors we can show.
 
-  revealed_goat_door = ([0,1,2] - [car] - [choice]).first
+  revealed_goat_door = ([0, 1, 2] - [car] - [choice]).first
 
-  # Randomly decide to switch or to keep original choice
-  switch = rand(2)
+  # Choose the other door and see if we win
+  new_choice = ([0, 1, 2] - [revealed_goat_door] - [choice]).first
+  if car == new_choice
+    switch_wins += 1
+  end
 
-  if switch == 1
-    # Choose the other door
-    new_choice = ([0,1,2] - [revealed_goat_door] - [choice]).first
-    # See if the new choice is the winner
-    if car == new_choice
-      switch_wins += 1
-    end
-  else
-    # See if the original choice is the winner
-    if car == choice
-      keep_wins += 1
-    end
+  # Otherwise, see if staying would have won
+  if car == choice
+    keep_wins += 1
   end
 
 end
 
-puts "After #{iterations} iterations, wins from switching: #{((switch_wins.to_f / iterations.to_f) * 100.0).round(2)}%, wins from staying: #{((keep_wins.to_f / iterations.to_f) * 100.0).round(2)}%."
+puts "-- After #{iterations} iterations of each strategy --"
+puts "Wins from switching: #{((switch_wins.to_f / iterations.to_f) * 100.0).round(2)}%"
+puts "Wins from staying: #{((keep_wins.to_f / iterations.to_f) * 100.0).round(2)}%."

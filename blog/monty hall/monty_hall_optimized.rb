@@ -23,23 +23,26 @@ car = 2
 # otherwise default to 500K
 iterations = (ARGV.empty? ? 500000 : ARGV[0].to_i)
 
+# Always stay
 iterations.times do
 
   # Pick a door
   choice = rand(3)
 
-  # Randomly decide to switch or to keep original choice
-  switch = rand(2)
-
-  # Only check for win conditions
-  if (switch == 1 && car != choice)
-    # Picked a goat, then switched
-    switch_wins += 1
-  elsif (switch == 0 && car == choice)
+  # Test the "stay" strategy
+  if car == choice
     # Picked the car, and stuck with it
     keep_wins += 1
   end
 
+  # Test the "switch" strategy
+  if car != choice
+    # Picked a goat, then switched
+    switch_wins += 1
+  end
+
 end
 
-puts "After #{iterations} iterations, wins from switching: #{((switch_wins.to_f / iterations.to_f) * 100.0).round(2)}%, wins from staying: #{((keep_wins.to_f / iterations.to_f) * 100.0).round(2)}%."
+puts "-- After #{iterations} iterations --"
+puts "Wins from switching: #{((switch_wins.to_f / iterations.to_f) * 100.0).round(2)}%"
+puts "Wins from staying: #{((keep_wins.to_f / iterations.to_f) * 100.0).round(2)}%."
