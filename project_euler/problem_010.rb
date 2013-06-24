@@ -18,7 +18,6 @@ sieve[0] = sieve[1] = nil
   (i*i).step(limit, i) do |j|
     sieve[j] = nil
   end
-
 end
 
 # Remove nil (non-prime) numbers
