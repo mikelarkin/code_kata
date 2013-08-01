@@ -30,7 +30,7 @@ module ImplementationOne
     (array.size / 2 + 1).times do |n|
       # See if the element is equal (found it), larger, or smaller
       if array[index] == search
-        return index # offset because arrays start at 0
+        return index
       elsif array[index] > search
         top = index - 1
       elsif array[index] < search
