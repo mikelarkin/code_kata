@@ -12,6 +12,16 @@ grid = Array.new(limit) {Array.new(limit)}
 
 start = [0, 0]
 finish = [limit - 1, limit - 1]
+move_list = []
 
 # "Without backtracking" means we can only move down or right
+# The total number of moves to reach the bottom corner is therefore 2 * n 
+# We can use recursion keep a unique list of the different paths
+# The count of elements in the list is the number of routes
+
+def move()
+
+end
+
+
 

@@ -13,6 +13,7 @@ sum = 0
 1.upto(limit).each do |i|
   if i.to_s == i.to_s.reverse && i.to_s(2) == i.to_s(2).reverse
     sum += i
+    puts i
   end
 end
 
