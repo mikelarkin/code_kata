@@ -2,7 +2,7 @@ require "test/unit"
 require "../problem_089"
 
 
-class TestProblem089 < Minitest::Test
+class TestProblem089 < Test::Unit::TestCase
 
 
   def test_minimize
