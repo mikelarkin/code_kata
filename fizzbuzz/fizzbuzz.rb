@@ -4,13 +4,14 @@
 # For numbers which are multiples of both three and five print “FizzBuzz”."
 
 # Allow the upper limit to be set via the prompt, but default to 100
-limit = (ARGV.empty? ? 100 : ARGV[0].to_i)
+# limit = (ARGV.empty? ? 100 : ARGV[0].to_i)
 
-1.upto(limit).each do |n|
+result = ""
+1.upto(1000).each do |n|
     # Use string interpolation to construct the expected responses
     output = "#{n % 3 == 0 ? "Fizz" : ""}#{n % 5 == 0 ? "Buzz" : ""}"
 
     # Print the number if it's not a special case
-    output.empty? ? (puts n) : (puts output)
+    result += output.empty? ? n.to_s : output.to_s
 end
-
+puts result
