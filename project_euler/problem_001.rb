@@ -9,10 +9,9 @@
 # Allow the upper limit to be set via the prompt, but default to 999
 limit = (ARGV.empty? ? 999 : ARGV[0].to_i)
 
-# Brute force it
 result = 0
 (1..limit).each do |n|
   result += n if ((n % 3 == 0) || (n % 5 == 0))
 end
 
-puts "Answer for 1 - #{limit}:  #{result}"
+puts "\n\nAnswer for 1 - #{limit}:  #{result}\n\n"
